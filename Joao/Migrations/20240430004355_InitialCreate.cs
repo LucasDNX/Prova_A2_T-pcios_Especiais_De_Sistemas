@@ -14,7 +14,8 @@ namespace Joao.Migrations
                 name: "Funcionarios",
                 columns: table => new
                 {
-                    FuncionarioId = table.Column<string>(type: "TEXT", nullable: false),
+                    FuncionarioId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Nome = table.Column<string>(type: "TEXT", nullable: false),
                     Cpf = table.Column<string>(type: "TEXT", nullable: false)
                 },
@@ -32,12 +33,12 @@ namespace Joao.Migrations
                     Quantidade = table.Column<int>(type: "INTEGER", nullable: false),
                     Ano = table.Column<int>(type: "INTEGER", nullable: false),
                     Mes = table.Column<int>(type: "INTEGER", nullable: false),
-                    SalarioBruto = table.Column<float>(type: "REAL", nullable: false),
-                    ImpostoIRRF = table.Column<float>(type: "REAL", nullable: false),
-                    ImpostoINSS = table.Column<float>(type: "REAL", nullable: false),
-                    ImpostoFGTS = table.Column<float>(type: "REAL", nullable: false),
-                    SalarioLiquido = table.Column<float>(type: "REAL", nullable: false),
-                    FuncionarioId = table.Column<string>(type: "TEXT", nullable: false)
+                    SalarioBruto = table.Column<float>(type: "REAL", nullable: true),
+                    ImpostoIRRF = table.Column<float>(type: "REAL", nullable: true),
+                    ImpostoINSS = table.Column<float>(type: "REAL", nullable: true),
+                    ImpostoFGTS = table.Column<float>(type: "REAL", nullable: true),
+                    SalarioLiquido = table.Column<float>(type: "REAL", nullable: true),
+                    FuncionarioId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

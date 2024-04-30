@@ -1,4 +1,4 @@
-@base_url = https://localhost:5271/api
+@base_url = http://localhost:5271/api
 
 # FUNCIONÁRIO ######################################
 
@@ -7,7 +7,8 @@ POST {{base_url}}/funcionario/cadastrar
 Content-Type: application/json
 
 {
-    "nome": "Andre",
+    "funcionarioId" : 1,
+    "nome": "Joao",
     "cpf" : "12345678912"
 }
 
@@ -25,7 +26,7 @@ Content-Type: application/json
     "quantidade" : 1000,
     "mes" : 10,
     "ano" : 2023,
-    "funcionarioId" : 1
+    "funcionarioId" : 1,
 }
 
 ### Obtenção de todas as folhas

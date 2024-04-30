@@ -29,6 +29,17 @@ app.MapGet("/api/funcionario/listar", ([FromServices] AppDataContext context) =>
 
 app.MapPost("/api/folha/cadastrar/", ([FromBody] Folha folha, [FromServices] AppDataContext context) =>
 {
+    folha.CalculaIRRF();
+    folha.CalculaINSS();
+    folha.CalculaFGTS();
+    folha.CalculaSalarioLiquido();
+
+    Funcionario? funcionario = context.Funcionarios.FirstOrDefault(x => x.FuncionarioId == folha.FuncionarioId);
+    if (folha is null)
+        return Results.NotFound(string.Format("Funcionario não encontrado para o ID mencionado"));
+
+    folha.SetarFuncionario(funcionario);
+
     context.Folhas.Add(folha);
     context.SaveChanges();
     return Results.Created("", folha);
